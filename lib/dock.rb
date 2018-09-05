@@ -66,7 +66,16 @@ class Dock
   end
 
   def total_hours_by_rental_type
-
+    hours_by_type = {}
+    @returned_boats.each do |boat|
+      if hours_by_type[boat.type] == nil
+        hours_by_type[boat.type] = 0
+        hours_by_type[boat.type] += boat.hours_rented
+      else
+        hours_by_type[boat.type] += boat.hours_rented
+      end
+    end
+    hours_by_type
   end
 
 end

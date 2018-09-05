@@ -125,8 +125,8 @@ class DockTest < Minitest::Test
     assert_equal 195, dock.revenue
     expected_1 = {"4242424242424242" => 105, "1313131313131313" => 90}
     assert_equal expected_1, dock.charges
-    # expected_2 = {:kayak => 4, :canoe => 1, :standup_paddle_board => 10}
-    # assert_equal expected_2, dock.total_hours_by_rental_type
+    expected_2 = {:kayak => 4, :canoe => 1, :standup_paddle_board => 10}
+    assert_equal expected_2, dock.total_hours_by_rental_type
 
   end
 
