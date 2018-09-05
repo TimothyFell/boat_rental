@@ -16,7 +16,7 @@ class Dock
 
   def rent(boat, renter)
     renter_name = renter.name
-    boat.last_renter = renter.name
+    boat.last_renter = renter.credit_card_number
     # don't want to set an empty array each time
     if @rented_list[renter_name] == nil
       @rented_list[renter_name] = []
@@ -48,6 +48,25 @@ class Dock
     @total_revenue = @returned_boats.sum do |boat|
       boat.hours_rented * boat.price_per_hour
     end
+  end
+
+  def charges
+    charges = {}
+    @returned_boats.each do |boat|
+      if charges[boat.last_renter] == nil
+        charges[boat.last_renter] = 0
+        boat_revenue = boat.hours_rented * boat.price_per_hour
+        charges[boat.last_renter] += boat_revenue
+      else
+        boat_revenue = boat.hours_rented * boat.price_per_hour
+        charges[boat.last_renter] += boat_revenue
+      end
+    end
+    charges
+  end
+
+  def total_hours_by_rental_type
+
   end
 
 end
