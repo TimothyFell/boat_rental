@@ -17,6 +17,7 @@ class Dock
   def rent(boat, renter)
     renter_name = renter.name
     boat.last_renter = renter.name
+    # don't want to set an empty array each time
     if @rented_list[renter_name] == nil
       @rented_list[renter_name] = []
       @rented_list[renter_name] << boat
